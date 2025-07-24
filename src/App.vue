@@ -1,5 +1,15 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue';
+
+const shoppingList = ref([])
+
+
+
+function handleBuy(plant) {
+  shoppingList.value.push(plant)
+  console.log(shoppingList.value)
+}
 </script>
 
 <template>
@@ -8,7 +18,9 @@ import { RouterLink, RouterView } from 'vue-router'
     <RouterLink to="/about">About</RouterLink>
   </nav>
 
-  <RouterView />
+
+  <RouterView @buy="handleBuy"/>
+
 </template>
 
 <style lang="scss" scoped>
