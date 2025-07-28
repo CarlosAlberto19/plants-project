@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue';
+import ShoppingCart from './components/ShoppingCart.vue';
 
 const shoppingList = ref([])
 
@@ -13,10 +14,16 @@ function handleBuy(plant) {
 </script>
 
 <template>
+  <header>
+    <ShoppingCart :shoppingList="shoppingList"/>
+  </header>
+
   <nav>
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About</RouterLink>
+
   </nav>
+
 
 
   <RouterView @buy="handleBuy"/>
@@ -24,6 +31,14 @@ function handleBuy(plant) {
 </template>
 
 <style lang="scss" scoped>
+
+header {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 1rem;
+}
+
 nav {
   display: flex;
   gap: 1rem;
