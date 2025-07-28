@@ -12,36 +12,35 @@ defineProps({ shoppingList: Array})
 
 
 <template>
-
- <button class="shopping-cart">
+  <RouterLink to="/about" class="shopping-cart">
     🛒
-
-  </button>
-
-  <span class="bubble" v-if="shoppingList.length > 0">
-  {{ shoppingList.length }}
-</span>
-
-
+    <span class="bubble" v-if="shoppingList.length > 0">
+      {{ shoppingList.length }}
+    </span>
+  </RouterLink>
 </template>
 
 
 
 
-<style lang="scss">
-
-shopping-cart{
-  height: 340rem;
+<style scoped lang="scss">
+.shopping-cart {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
-bubble{
-
-  align-items: left;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-
-
+.bubble {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: crimson;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-
-
-
 </style>
