@@ -18,15 +18,8 @@ function handleBuy(plant) {
     <ShoppingCart :shoppingList="shoppingList"/>
   </header>
 
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
 
-  </nav>
-
-
-
-  <RouterView @buy="handleBuy"/>
+  <RouterView @buy="handleBuy" :shoppingList="shoppingList"/>
 
 </template>
 

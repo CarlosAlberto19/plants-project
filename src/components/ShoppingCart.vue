@@ -1,25 +1,37 @@
 <script setup>
 //import { defineProps, watch } from 'vue';
+import { useRouter } from 'vue-router'
 
-defineProps({ shoppingList: Array})
+const props = defineProps({ shoppingList: Array})
 
 /*watch(() => shoppingList.length, (newVal) => {
   console.log("Nuevo número de plantas en el carrito:", newVal);
 });
 */
+
+
+const router = useRouter()
+
+function goToCart() {
+  if (props.shoppingList.length > 0) {
+    router.push('/shopping')
+  } else {
+    alert('No has añadido ninguna planta al carrito')
+  }
+}
+
 </script>
 
 
 
 <template>
-  <RouterLink to="/about" class="shopping-cart">
+  <div class="shopping-cart" @click="goToCart">
     🛒
     <span class="bubble" v-if="shoppingList.length > 0">
       {{ shoppingList.length }}
     </span>
-  </RouterLink>
+  </div>
 </template>
-
 
 
 
