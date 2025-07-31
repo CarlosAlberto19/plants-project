@@ -1,4 +1,5 @@
 <script setup>
+import PlantCard from '@/components/PlantCard.vue';
 const props = defineProps({ shoppingList: Array })
 </script>
 
