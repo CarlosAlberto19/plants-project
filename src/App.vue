@@ -7,9 +7,14 @@ const shoppingList = ref([])
 
 
 
-function handleBuy(plant) {
+function handleUpdateCard(plant,action) {
+  if (action ==='add'){
   shoppingList.value.push(plant)
-  console.log(shoppingList.value)
+  }
+  else if (action === 'remove'){
+    shoppingList.value = shoppingList.value.filter(p => p.id !== plant.id)
+  }
+  //console.log(shoppingList.value)
 }
 </script>
 
@@ -19,7 +24,7 @@ function handleBuy(plant) {
   </header>
 
 
-  <RouterView @buy="handleBuy" :shoppingList="shoppingList"/>
+  <RouterView @update-card="handleUpdateCard" :shoppingList="shoppingList"/>
 
 </template>
 

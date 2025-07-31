@@ -5,10 +5,10 @@ const props = defineProps({
   plantList: Array,
 })
 
-const emit = defineEmits(['buy'])
+const emit = defineEmits(['update-card'])
 
-function handleBuy(plant) {
-  emit('buy', plant) // Propaga hacia App.vue
+function handleUpdateCard(plant, action) {
+  emit('update-card', plant, action) // Propaga hacia App.vue
 }
 
 </script>
@@ -19,7 +19,7 @@ function handleBuy(plant) {
       v-for="plant in props.plantList"
       :key="plant.id"
       :plant="plant"
-      @buy="handleBuy"
+      @update-card="handleUpdateCard"
     />
   </div>
 </template>

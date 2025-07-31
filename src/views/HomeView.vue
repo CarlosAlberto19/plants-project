@@ -1,7 +1,7 @@
 <script setup>
 import PlantList from '@/components/PlantList.vue';
 
-const emit = defineEmits(['buy'])
+const emit = defineEmits(['update-card'])
 
 const plantList = [
   { id: 1, name: "Snake Plant", type: "indoor", price: 1200, image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" },
@@ -19,8 +19,8 @@ const plantList = [
 ];
 
 function handleBuy(plant) {
-  emit('buy', plant)
-  
+  emit('update-card', plant, 'add')
+
 
 }
 
@@ -36,7 +36,7 @@ function handleBuy(plant) {
 
 
   <PlantList :plantList="plantList"
-   @buy="handleBuy"
+   @update-card="handleBuy"
     />
 
 

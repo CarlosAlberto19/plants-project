@@ -2,11 +2,11 @@
 import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({ plant: Object })
-const emit = defineEmits(['buy'])
+const emit = defineEmits(['update-card'])
 
 function handleClick() {
   console.log('Emitido desde BuyButton:', props.plant)
-  emit('buy', props.plant)
+  emit('update-card', props.plant, 'add')
 }
 </script>
 

@@ -3,10 +3,10 @@ import BuyButton from './BuyButton.vue'
 
 
 const props = defineProps({ plant: Object })
-const emit = defineEmits(['buy'])
+const emit = defineEmits(['update-card'])
 
-function handleBuy(plant) {
-  emit('buy', plant)
+function handleBuy(plant, action) {
+  emit('update-card', plant, action)
 }
 </script>
 
@@ -24,7 +24,7 @@ function handleBuy(plant) {
     <!-- Escucha el evento 'buy' del botón y llama a handleBuy -->
     <BuyButton
       :plant="props.plant"
-      @buy="handleBuy"
+      @update-card="handleBuy"
       class="buy-btn"
     >
       Buy
