@@ -1,16 +1,26 @@
 <script setup>
-import PlantCard from '@/components/PlantCard.vue';
+import PlantCardCart from '@/components/PlantCardCart.vue'
+
 const props = defineProps({ shoppingList: Array })
+const emit = defineEmits(['update-card'])
+
+function handleUpdateCart(plant, action) {
+emit('update-card', plant, action)
+}
 </script>
 
 <template>
-  <div v-for="(plant, index) in props.shoppingList" :key="index">
-    🌱 {{ plant.name }} - 💰 {{ plant.price }} €
-  </div>
-
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<!-- 1 tarjeta PlantCardCart por cada planta del array -->
+<PlantCardCart
+v-for="(plant, idx) in props.shoppingList"
+:key="plant.id || idx"
+:plant="plant"
+@update-card="(payload , action) =>
+  handleUpdateCart(action === 'remove' ? idx: payload,
+    action
+)"
+  )
+/>
 </template>
 
 <style lang="scss">

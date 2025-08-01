@@ -7,12 +7,18 @@ const shoppingList = ref([])
 
 
 
-function handleUpdateCard(plant,action) {
+function handleUpdateCard(payload,action) {
   if (action ==='add'){
-  shoppingList.value.push(plant)
+  shoppingList.value.push(payload)
   }
   else if (action === 'remove'){
-    shoppingList.value = shoppingList.value.filter(p => p.id !== plant.id)
+    const idx = payload
+    if (idx > -1 && idx < shoppingList.value.length) {
+      shoppingList.value.splice(idx, 1)
+    }
+
+
+
   }
   //console.log(shoppingList.value)
 }
@@ -24,7 +30,8 @@ function handleUpdateCard(plant,action) {
   </header>
 
 
-  <RouterView @update-card="handleUpdateCard" :shoppingList="shoppingList"/>
+  <RouterView @update-card="handleUpdateCard" :shoppingList="shoppingList" :@buy="handleBuy" />
+
 
 </template>
 
