@@ -12,6 +12,8 @@ function handleAdd(){
   emit('update-card' , props.plant, 'add')
 }
 
+function amount(){}
+
 </script>
 
 
@@ -26,9 +28,11 @@ class="plant-image"
 <h4>{{ props.plant.price }}</h4>
 <!-- etc… -->
 </div>
-<button class="Borrar" @click="handleRemove"> Borrar</button>
-
-<button class="Añadir planta" @click="handleAdd" > Añadir </button>
+<div class="cart-controls">
+<button  @click="handleRemove"> ➖</button>
+<span>{{ amount()  }}</span>
+<button class="Añadir planta" @click="handleAdd" > ➕ </button>
+</div>
 </template>
 
 
