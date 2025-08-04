@@ -1,64 +1,94 @@
+<template>
+  <div class="plant-card-cart">
+    <!-- 1. Imagen a la izquierda -->
+    <img :src="plant.image" :alt="plant.name" class="plant-image" />
+
+    <!-- 2. Contenedor de detalles a la derecha -->
+    <div class="plant-details">
+      <h3 class="plant-name">{{ plant.name }}</h3>
+      <p class="plant-price">{{ totalPrice }} €</p>
+      <div class="cart-controls">
+        <button @click="handleRemove">−</button>
+        <span class="cart-amount">{{ amount }}</span>
+        <button @click="handleAdd">＋</button>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits, computed } from 'vue'
 
-/* 1. props */
 const props = defineProps({
-plant: { type: Object, required: true },
-shoppingList: { type: Array, required: true }
+  plant:  { type: Object, required: true },
+  amount: { type: Number, required: true }
 })
-
-/* 2. emits (“update-card” basta) */
 const emit = defineEmits(['update-card'])
 
-/* 3. botones */
-function handleAdd () {
-emit('update-card', props.plant, 'add') // App.vue hará push()
-}
+const totalPrice = computed(() => props.plant.price * props.amount)
 
-function handleRemove () {
-emit('update-card', props.plant, 'remove') // App.vue hará splice()
-}
-
-/* 4. función amount() – cuenta duplicados */
-function amount () {
-return props.shoppingList.filter(
-p => p.id === props.plant.id
-).length
-}
+function handleAdd()    { emit('update-card', props.plant, 'add') }
+function handleRemove() { emit('update-card', props.plant, 'remove') }
 </script>
-
-
-<template>
-<div class="plant-card-cart">
-<!-- datos de la planta -->
-<img :src="plant.image" :alt="plant.name" class="plant-image" />
-<h3>{{ plant.name }}</h3>
-<p>{{ plant.price }} €</p>
-
-<!-- contador -->
-<div class="cart-controls">
-<button @click="handleRemove">−</button>
-<span>{{ amount() }}</span> <!-- n se calcula al vuelo -->
-<button @click="handleAdd">＋</button>
-</div>
-</div>
-</template>
 
 <style scoped lang="scss">
 .plant-card-cart {
-max-width: 18rem;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 1rem;
-border: 1px solid #ddd;
-border-radius: 0.5rem;
-gap:10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
 }
 
 .plant-image {
-width: 100%;
-height: auto;
-border-radius: 0.25rem;
+  width: 120px;
+  height: auto;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
+}
+
+.plant-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.plant-name {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.plant-price {
+  margin: 0;
+  font-weight: bold;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cart-controls button {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  background: #c0d6d1;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.cart-amount {
+  display: inline-block;
+  min-width: 2rem;
+  text-align: center;
+  font-weight: bold;
+  background: #eee;
+  border-radius: 50%;
+  line-height: 2rem;
 }
 </style>
