@@ -11,7 +11,7 @@ function handleUpdateCard(plant, action) {
   emit('update-card', plant, action) // Propaga hacia App.vue
 }
 
-</script>
+</script>z
 
 <template>
   <div class="plant-list">

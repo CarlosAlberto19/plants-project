@@ -1,41 +1,48 @@
 <script setup>
+import { defineProps, defineEmits } from 'vue'
 
-const props = defineProps({ plant: Object })
+/* 1. props */
+const props = defineProps({
+plant: { type: Object, required: true },
+shoppingList: { type: Array, required: true }
+})
 
+/* 2. emits (“update-card” basta) */
 const emit = defineEmits(['update-card'])
 
-function handleRemove(){
-  emit('update-card' , props.plant, 'remove')
+/* 3. botones */
+function handleAdd () {
+emit('update-card', props.plant, 'add') // App.vue hará push()
 }
 
-function handleAdd(){
-  emit('update-card' , props.plant, 'add')
+function handleRemove () {
+emit('update-card', props.plant, 'remove') // App.vue hará splice()
 }
 
-function amount(){}
-
+/* 4. función amount() – cuenta duplicados */
+function amount () {
+return props.shoppingList.filter(
+p => p.id === props.plant.id
+).length
+}
 </script>
 
 
 <template>
 <div class="plant-card-cart">
-<img
-class="plant-image"
-:src="props.plant.image"
-:alt="props.plant.name"
-/>
-<h2>{{ props.plant.name }}</h2>
-<h4>{{ props.plant.price }}</h4>
-<!-- etc… -->
-</div>
+<!-- datos de la planta -->
+<img :src="plant.image" :alt="plant.name" class="plant-image" />
+<h3>{{ plant.name }}</h3>
+<p>{{ plant.price }} €</p>
+
+<!-- contador -->
 <div class="cart-controls">
-<button  @click="handleRemove"> ➖</button>
-<span>{{ amount()  }}</span>
-<button class="Añadir planta" @click="handleAdd" > ➕ </button>
+<button @click="handleRemove">−</button>
+<span>{{ amount() }}</span> <!-- n se calcula al vuelo -->
+<button @click="handleAdd">＋</button>
+</div>
 </div>
 </template>
-
-
 
 <style scoped lang="scss">
 .plant-card-cart {

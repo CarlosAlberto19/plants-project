@@ -1,27 +1,26 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import { ref } from 'vue';
+import { RouterView } from 'vue-router'
+import { ref, computed } from 'vue';
 import ShoppingCart from './components/ShoppingCart.vue';
 
 const shoppingList = ref([])
 
 
 
-function handleUpdateCard(payload,action) {
+function handleUpdateCard(plant,action) {
   if (action ==='add'){
-  shoppingList.value.push(payload)
+  shoppingList.value.push(plant)
   }
   else if (action === 'remove'){
-    const idx = payload
-    if (idx > -1 && idx < shoppingList.value.length) {
-      shoppingList.value.splice(idx, 1)
+    const i= shoppingList.value.findIndex(p => p.id === plant.id)
+    if (i > -1) shoppingList.value.splice(i, 1)
     }
 
 
 
   }
   //console.log(shoppingList.value)
-}
+
 </script>
 
 <template>

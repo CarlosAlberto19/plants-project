@@ -12,14 +12,12 @@ emit('update-card', plant, action)
 <template>
 <!-- 1 tarjeta PlantCardCart por cada planta del array -->
 <PlantCardCart
-v-for="(plant, idx) in props.shoppingList"
-:key="plant.id || idx"
+v-for="(plant, index) in props.shoppingList"
+:key="plant.id || index"
 :plant="plant"
-@update-card="(payload , action) =>
-  handleUpdateCart(action === 'remove' ? idx: payload,
-    action
-)"
-  )
+:shoppingList="shoppingList"
+@update-card="handleUpdateCart"
+
 />
 </template>
 
