@@ -46,6 +46,8 @@ const grandTotalLabel = computed(() => {
 function handleUpdateCart(plant, action) {
   emit('update-card', plant, action)
 }
+
+
 </script>
 
 

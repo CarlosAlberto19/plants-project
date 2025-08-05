@@ -1,5 +1,8 @@
 <script setup>
+import {ref, computed} from 'vue'
 import PlantList from '@/components/PlantList.vue';
+import SearchBar from '@/components/SearchBar.vue';
+
 
 const emit = defineEmits(['update-card'])
 
@@ -29,7 +32,7 @@ function handleBuy(plant) {
 
 <template>
 
-
+<SearchBar class="searchbar-left" @search="handleSearch" />
 
   <br><br><br>
    <!--h2>Total plants: {{ plantList.length }}</h2> -->
@@ -42,12 +45,19 @@ function handleBuy(plant) {
 
 
 
+
 </template>
 
 
 
 
 <style lang="scss" scoped>
+
+.searchbar-left {
+  display:flex;
+  justify-content: flex-star;
+  margin-bottom:1rem;
+}
 
 
 
