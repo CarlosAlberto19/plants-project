@@ -31,16 +31,19 @@ function handleBuy(plant) {
 </script>
 
 <template>
+<div class="home-view">
+  <SearchBar class="searchbar-left" @search="handleSearch" />
 
-<SearchBar class="searchbar-left" @search="handleSearch" />
+<PlantList :plantList="plantList"
+   @update-card="handleBuy"
+    />
+</div>
 
   <br><br><br>
    <!--h2>Total plants: {{ plantList.length }}</h2> -->
 
 
-  <PlantList :plantList="plantList"
-   @update-card="handleBuy"
-    />
+
 
 
 
@@ -55,7 +58,9 @@ function handleBuy(plant) {
 
 .searchbar-left {
   display:flex;
-  justify-content: flex-star;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 80%;
   margin-bottom:1rem;
 }
 
