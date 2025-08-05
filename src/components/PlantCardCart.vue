@@ -1,3 +1,23 @@
+<script setup>
+import { defineProps, defineEmits, computed } from 'vue'
+
+const props = defineProps({
+  plant:  { type: Object, required: true },
+  amount: { type: Number, required: true }
+})
+const emit = defineEmits(['update-card'])
+
+const totalPrice = computed(() => props.plant.price * props.amount)
+
+function handleAdd() {
+   emit('update-card', props.plant, 'add')
+   }
+function handleRemove() {
+   emit('update-card', props.plant, 'remove')
+   }
+</script>
+
+
 <template>
   <div class="plant-card-cart">
     <!-- 1. Imagen a la izquierda -->
@@ -15,21 +35,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { defineProps, defineEmits, computed } from 'vue'
-
-const props = defineProps({
-  plant:  { type: Object, required: true },
-  amount: { type: Number, required: true }
-})
-const emit = defineEmits(['update-card'])
-
-const totalPrice = computed(() => props.plant.price * props.amount)
-
-function handleAdd()    { emit('update-card', props.plant, 'add') }
-function handleRemove() { emit('update-card', props.plant, 'remove') }
-</script>
 
 <style scoped lang="scss">
 .plant-card-cart {

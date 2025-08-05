@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import { ref, computed } from 'vue';
+import { ref } from 'vue';
 import ShoppingCart from './components/ShoppingCart.vue';
 
 const shoppingList = ref([])
