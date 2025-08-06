@@ -4,85 +4,78 @@ import { ref, defineEmits } from 'vue'
 const emit = defineEmits(['search'])
 const searchTerm = ref('')
 
-function handleInput() {
-emit('search', searchTerm.value)
+function handleInput(event) {
+emit('search', event.target.value)
 }
 </script>
 
 <template>
-<div class="search-bar">
-<input
-type="text"
-v-model="searchTerm"
-@input="handleInput"
-placeholder="Buscar planta..."
-/>
+  <div class="searchbar-wrapper">
+    <div class="search-bar">
+      <input
+        type="text"
+        v-model="searchTerm"
+        @input="handleInput"
+        placeholder="What are you looking for"
+        />
+          <span class=" search-icon">🔍</span>
+</div>
 </div>
 </template>
 
 <style scoped lang="scss">
+
+.searchbar-wrapper {
+position: relative;
+width: 100%;
+max-width: 450px;
+height: 64px;
+background-color: white;
+border-radius: 12px;
+display: flex;
+align-items: center;
+padding-left: 1rem;
+}
+
 .search-bar {
 display: flex;
-justify-content: center;
-margin-bottom: 1rem;
-
-input {
-padding: 0.5rem 1rem;
-font-size: 1rem;
-width: 100%;
-max-width: 400px;
-border: 1px solid #ccc;
-border-radius: 0.5rem;
-outline: none;
-transition: border-color 0.3s;
-
-&:focus {
-border-color: #42b983;
-}
-}
-}
-</style>
-
-
-<style lang="scss">
-
-
-.search-box {
-display: grid;
-grid-template-columns: 1.5rem 1fr auto;
 align-items: center;
-gap: 0.5rem;
-padding: 0.5rem 0.75rem;
-border: 1px solid #cfd8dc;
-border-radius: 0.5rem;
-background: #fff;
-max-width: 560px;
 width: 100%;
+height: 100%;
+padding-right: 60px; // espacio para la lupa
+position: relative;
 }
 
-.icon {
-opacity: 0.7;
-line-height: 1;
-}
-
-.search-input {
+.search-bar input {
+width: 100%;
+height: 100%;
+padding: 0 1rem;
+font-size: 1rem;
 border: none;
 outline: none;
-font-size: 1rem;
-width: 100%;
+background-color: transparent;
+
+&::placeholder {
+color: #999;
+font-weight: 500;
+}
 }
 
-.clear-btn {
-border: none;
-background: #e0e0e0;
-border-radius: 0.35rem;
-width: 1.6rem;
-height: 1.6rem;
-line-height: 1.6rem;
-text-align: center;
+.search-icon {
+position: absolute;
+right: 8px;
+top: 8px;
+width: 48px;
+height: 48px;
+background-color: #C1DCDC;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.5rem;
 cursor: pointer;
+user-select: none;
 }
-.clear-btn:hover { background: #d5d5d5; }
 </style>
 
 

@@ -1,8 +1,10 @@
 <script setup>
+
 import {ref, computed} from 'vue'
 import PlantList from '@/components/PlantList.vue';
 import SearchBar from '@/components/SearchBar.vue';
 
+const searchTerm = ref('')
 
 const emit = defineEmits(['update-card'])
 
@@ -21,20 +23,35 @@ const plantList = [
   { id: 12, name: "Jade Plant", type: "succulent", price: 950, image: "https://images.unsplash.com/photo-1438109491414-7198515b166b?auto=format&fit=crop&w=400&q=80" }
 ];
 
+
+const filteredPlantList = computed(() => {
+  if (!searchTerm.value) return plantList
+  return plantList.filter(plant =>
+    plant.name.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase())
+  )
+})
+
+function filterPlants(term) {
+  searchTerm.value = term
+}
+
+
 function handleBuy(plant) {
   emit('update-card', plant, 'add')
 
-
 }
+
+
+
 
 
 </script>
 
 <template>
 <div class="home-view">
-  <SearchBar class="searchbar-left" @search="handleSearch" />
+  <SearchBar class="searchbar-left" @search="filterPlants"  />
 
-<PlantList :plantList="plantList"
+<PlantList :plantList="filteredPlantList"
    @update-card="handleBuy"
     />
 </div>

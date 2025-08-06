@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import { ref } from 'vue';
 import ShoppingCart from './components/ShoppingCart.vue';
-import SearchBar from './components/SearchBar.vue';
+
 
 const shoppingList = ref([])
 
@@ -28,12 +28,12 @@ function handleUpdateCard(plant,action) {
   <header>
     <ShoppingCart :shoppingList="shoppingList"/>
 
-    
+
 
   </header>
 
 
-  <RouterView @update-card="handleUpdateCard" :shoppingList="shoppingList" :@buy="handleBuy" />
+  <RouterView @update-card="handleUpdateCard" :shoppingList="shoppingList" @buy="handleBuy"  />
 
 
 </template>
