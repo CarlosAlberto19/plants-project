@@ -48,42 +48,87 @@ function handleBuy(plant) {
 </script>
 
 <template>
-<div class="home-view">
-  <SearchBar class="searchbar-left" @search="filterPlants"  />
+  <section class="hero-header">
+    <div class="hero-left">
+      <h1>Buy your<br> dream plants</h1>
 
-<PlantList :plantList="filteredPlantList"
-   @update-card="handleBuy"
+      <div class="info-row">
+        <div class="info-box">50+ <br> Plant Species</div>
+        <div class="divider"></div>
+        <div class="info-box">100+ Customers</div>
+      </div>
+
+      <SearchBar class="searchbar-left" @search="filterPlants" />
+    </div>
+
+    <div class="hero-right">
+      <!--<img src="URL_DE_LA_IMAGEN" alt="plant hero" /> -->
+    </div>
+  </section>
+
+  <section class="home-view">
+    <PlantList
+      :plantList="filteredPlantList"
+      @update-card="handleBuy"
     />
-</div>
-
-  <br><br><br>
-   <!--h2>Total plants: {{ plantList.length }}</h2> -->
-
-
-
-
-
-
-
-
+  </section>
 </template>
 
 
 
 
-<style lang="scss" scoped>
 
-.searchbar-left {
-  display:flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 80%;
-  margin-bottom:1rem;
+<style lang="scss" scoped>
+.hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background-color: #c1dcdc;
+
+  .hero-left {
+    flex: 1;
+    max-width: 60%;
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+
+      .info-box {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+
+      .divider {
+        width: 1px;
+        height: 2.5rem;
+        background-color: #333;
+        margin-right: 3rem;
+      }
+    }
+  }
+
+  .hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
 
-
-
-
-
-
+.home-view {
+  padding: 2rem;
+}
 </style>
