@@ -1,8 +1,7 @@
 <script setup>
-
-import {ref, computed} from 'vue'
-import PlantList from '@/components/PlantList.vue';
-import SearchBar from '@/components/SearchBar.vue';
+import { ref, computed } from 'vue'
+import PlantList from '@/components/PlantList.vue'
+import SearchBar from '@/components/SearchBar.vue'
 
 const searchTerm = ref('')
 
@@ -21,13 +20,12 @@ const plantList = [
   { id: 10, name: "ZZ Plant", type: "indoor", price: 1400, image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=400&q=80" },
   { id: 11, name: "Rubber Plant", type: "indoor", price: 1600, image: "https://images.unsplash.com/photo-1516873240894-1c1edee28d43?auto=format&fit=crop&w=400&q=80" },
   { id: 12, name: "Jade Plant", type: "succulent", price: 950, image: "https://images.unsplash.com/photo-1438109491414-7198515b166b?auto=format&fit=crop&w=400&q=80" }
-];
-
+]
 
 const filteredPlantList = computed(() => {
   if (!searchTerm.value) return plantList
   return plantList.filter(plant =>
-    plant.name.toLocaleLowerCase().includes(searchTerm.value.toLocaleLowerCase())
+    plant.name.toLowerCase().includes(searchTerm.value.toLowerCase())
   )
 })
 
@@ -35,48 +33,42 @@ function filterPlants(term) {
   searchTerm.value = term
 }
 
-
 function handleBuy(plant) {
   emit('update-card', plant, 'add')
-
 }
-
-
-
-
-
 </script>
 
 <template>
   <section class="hero-header">
     <div class="hero-left">
-      <h1>Buy your<br> dream plants</h1>
+      <h1>Buy your<br> <span>dream plants</span></h1>
 
       <div class="info-row">
-        <div class="info-box">50+ <br> Plant Species</div>
+        <div class="info-box">
+          <h2>50+</h2>
+          <p>Plant Species</p>
+        </div>
+
         <div class="divider"></div>
-        <div class="info-box">100+ Customers</div>
+
+        <div class="info-box">
+          <h2>100+</h2>
+          <p>Customers</p>
+        </div>
       </div>
 
       <SearchBar class="searchbar-left" @search="filterPlants" />
     </div>
 
     <div class="hero-right">
-      <!--<img src="URL_DE_LA_IMAGEN" alt="plant hero" /> -->
+      <!-- <img src="URL_DE_LA_IMAGEN" alt="plant hero" /> -->
     </div>
   </section>
 
-  <section class="home-view">
-    <PlantList
-      :plantList="filteredPlantList"
-      @update-card="handleBuy"
-    />
-  </section>
+  <div class="home-view">
+    <PlantList :plantList="filteredPlantList" @update-card="handleBuy" />
+  </div>
 </template>
-
-
-
-
 
 <style lang="scss" scoped>
 .hero-header {
@@ -84,47 +76,65 @@ function handleBuy(plant) {
   justify-content: space-between;
   align-items: center;
   padding: 2rem;
-  background-color: #c1dcdc;
+  background-color: #C1DCDC;
+  height: 28rem;
+}
 
-  .hero-left {
-    flex: 1;
-    max-width: 60%;
+.hero-left {
+  margin-bottom: 6rem;
+  max-width: 60%;
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 
-    .info-row {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-
-      .info-box {
-        font-size: 1rem;
-        font-weight: bold;
-      }
-
-      .divider {
-        width: 1px;
-        height: 2.5rem;
-        background-color: #333;
-        margin-right: 3rem;
-      }
+    span {
+      font-weight: bold;
+      color: #2c3e50;
     }
   }
 
-  .hero-right {
-    flex: 1;
+  .info-row {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
 
-    img {
-      max-width: 100%;
-      height: auto;
+    .info-box {
+      h2 {
+        font-size: 2rem;
+        margin: 0;
+      }
+      p {
+        margin: 0;
+        font-size: 1rem;
+      }
     }
+
+    .divider {
+      width: 2px;
+      height: 40px;
+      background-color: black;
+    }
+  }
+}
+
+.searchbar-left {
+  margin-top: 3rem;
+  width: 140%;
+  max-width: 500px;
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 

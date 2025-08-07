@@ -48,11 +48,12 @@ function goToCart() {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: crimson;
-  color: white;
-  font-size: 0.75rem;
+  background-color: #C1DCDC;
+  color: black;
+  font-size: 1rem;
   padding: 0.3rem 0.6rem;
   border-radius: 50%;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  transform:translateY(100%)
 }
 </style>
