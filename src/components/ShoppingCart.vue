@@ -26,7 +26,7 @@ function goToCart() {
 
 <template>
   <div class="shopping-cart" @click="goToCart">
-    🛒
+     <img src="@/assets/Cart.svg" alt="Decoración" class="summary-image" />
     <span class="bubble" v-if="shoppingList.length > 0">
       {{ shoppingList.length }}
     </span>
@@ -45,9 +45,9 @@ function goToCart() {
 }
 
 .bubble {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position:absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
   background-color: #C1DCDC;
   color: black;
   font-size: 1rem;

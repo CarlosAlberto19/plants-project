@@ -141,4 +141,5 @@ function handleBuy(plant) {
 .home-view {
   padding: 2rem;
 }
+
 </style>

@@ -17,10 +17,11 @@ function handleBuy(plant, action) {
       :alt="props.plant.name"
       class="plant-image"
     />
-    <h2>{{ props.plant.name }}</h2>
-    <p class="plant-type">{{ props.plant.type }}</p>
-    <p class="plant-price">₱ {{ props.plant.price }}</p>
+    <div class = "card-header">
+    <h4>{{ props.plant.name }}</h4>
 
+    <p class="plant-price">₱ {{ props.plant.price }}</p>
+      </div>
     <!-- Escucha el evento 'buy' del botón y llama a handleBuy -->
     <BuyButton
       :plant="props.plant"
@@ -39,10 +40,11 @@ function handleBuy(plant, action) {
   border-radius: 12px;
   box-shadow: 0 2px 8px #0002;
   padding: 1.2rem;
-  height: 499px;
-  width: 299.33px;
-  text-align: center;
+  height: 493.45px;
+  width: 295.36px;
+  align-self: auto;
   transition: box-shadow 0.2s;
+
 }
 
 .plant-card:hover {
@@ -64,22 +66,33 @@ function handleBuy(plant, action) {
 
 .plant-price {
   font-size: 1.1rem;
-  color: #7cc380;
+  color: #6c757d;
   font-weight: bold;
+  font-size:small;
 }
 
 .buy-btn {
   margin-top: 1rem;
   padding: 0.5rem 1.2rem;
-  background: #94e9af;
+  background: #C1DCDC;
   border: none;
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.2s;
+  align-self:flex-start;
 }
 .buy-btn:hover {
   background: hwb(149 20% 24% / 0.716);
   color: #fff;
 }
+.card-header {
+  display: flex;
+  flex-direction:column;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top:0.3rem;
+
+}
+
 </style>

@@ -40,11 +40,18 @@ function handleUpdateCard(plant,action) {
 
 <style lang="scss" scoped>
 
+:global(#app) {
+  background: rgb(242, 243, 242);
+
+}
+
+
 header {
   display: flex;
   justify-content: end;
   align-items: center;
   padding: 1rem;
+
 }
 
 nav {
@@ -63,4 +70,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
+
 </style>
