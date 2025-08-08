@@ -45,7 +45,7 @@ function goToCart() {
 }
 
 .bubble {
-  position:absolute;
+  position:relative;
   inset-block-start: 0;
   inset-inline-end: 0;
   background-color: #C1DCDC;
@@ -54,6 +54,8 @@ function goToCart() {
   padding: 0.3rem 0.6rem;
   border-radius: 50%;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  transform:translateY(100%)
+  transform:translateY(120%, -50%);
+  min-width: 1.1rem;
+
 }
 </style>
