@@ -61,7 +61,8 @@ function handleBuy(plant) {
     </div>
 
     <div class="hero-right">
-      <!-- <img src="URL_DE_LA_IMAGEN" alt="plant hero" /> -->
+       <img class="bg-blob" src="@/assets/Rectangle2.svg" alt="background">
+       <img class="hero-img" src="@/assets/relleno.svg" alt="plant hero" />
     </div>
   </section>
 
@@ -78,6 +79,7 @@ function handleBuy(plant) {
   padding: 2rem;
   background-color: #C1DCDC;
   height: 28rem;
+
 }
 
 .hero-left {
@@ -122,24 +124,49 @@ function handleBuy(plant) {
 
 .searchbar-left {
   margin-top: 3rem;
-  width: 140%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 560px;
 }
+
+.hero-left { flex: 0 0 60%;}
 
 .hero-right {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+flex: 1 1 40%;
+position: relative;
+overflow: hidden;
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+min-height: 520px;
+display:grid;
+place-items: center;
+
+background-image: url ('@/assets/Rectangle2.svg');
+
 }
+ .hero-img {
+    width: 80%;
+    height: auto;
+    transform: translateX(8%);
+
+  }
+
+  .bg-blob {
+
+    position: absolute;
+    z-index: 0;
+    width: 444.02px;
+    height: 394.69px;
+
+    top: 17%;
+    left: -10%;
+    transform: translate(10%, 0%)
+
+  }
 
 .home-view {
   padding: 2rem;
 }
 
+* {
+  box-sizing: border-box;
+}
 </style>
