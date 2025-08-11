@@ -45,7 +45,7 @@ function goToCart() {
   line-height: 0;
 }
 
-<<<<<<< HEAD
+
 .summary-image{
   display:block;
   width:100%;
@@ -76,21 +76,7 @@ function goToCart() {
   z-index: 2;
   pointer-events: none;
   font-family: inherit; /* no cambio tu fuente */
-=======
-.bubble {
-  position:absolute;
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  background-color: #C1DCDC;
-  color: black;
-  font-size: 1rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 50%;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  min-width: 1.1rem;
-  transform: translate(10%, 180%);
 
->>>>>>> 6ba3b4b (pendiente de los rizos y ajustar ancho div grande)
 }
 
 </style>
