@@ -61,7 +61,9 @@ function handleBuy(plant) {
     </div>
 
     <div class="hero-right">
+
        <img class="bg-blob" src="@/assets/Rectangle2.svg" alt="background">
+       <img class="curl" src="@/assets/Vector186.png" alt="curl" />
        <img class="hero-img" src="@/assets/relleno.svg" alt="plant hero" />
     </div>
   </section>
@@ -124,11 +126,14 @@ function handleBuy(plant) {
 
 .searchbar-left {
   margin-top: 3rem;
-  width: 100%;
+  width: 70%;
   max-width: 560px;
 }
 
-.hero-left { flex: 0 0 60%;}
+.hero-left { flex: 0 0 60%;
+height: auto;
+
+}
 
 .hero-right {
 flex: 1 1 40%;
@@ -168,5 +173,13 @@ background-image: url ('@/assets/Rectangle2.svg');
 
 * {
   box-sizing: border-box;
+}
+
+.curl{
+  height: 60px;
+  position:relative;
+  align-items: flex-start;
+  transform: translate(-150%, 480%)
+
 }
 </style>
