@@ -62,9 +62,10 @@ function handleBuy(plant) {
 
     <div class="hero-right">
 
-       <img class="bg-blob" src="@/assets/Rectangle2.svg" alt="background">
+       <img class="bg-blob" src="@/assets/Rectangle2.svg" alt="background"/>
        <img class="curl" src="@/assets/Vector186.png" alt="curl" />
         <img class="curl-right" src="@/assets/Vector187.png" alt="curl-right" />
+
        <img class="hero-img" src="@/assets/relleno.svg" alt="plant hero" />
     </div>
   </section>
@@ -154,7 +155,7 @@ background-image: url ('@/assets/Rectangle2.svg');
     z-index: 1;
     width: 78%;
     height: auto;
-    transform: translateX(5%) translateY(-39%)
+    transform: translateX(-7%) translateY(-7.5%)
 
   }
 
@@ -181,7 +182,7 @@ background-image: url ('@/assets/Rectangle2.svg');
 
 .curl{
   height: auto;
-  position:sticky;
+  position:fixed;
   width:150px;
   top:18%;
   align-items: flex-start;
@@ -190,9 +191,10 @@ background-image: url ('@/assets/Rectangle2.svg');
 }
 
 .curl-right{
+  position:fixed;
   top:20%;
   right: 10%;
   width:75px;
-  transform: translateX(235%) translateY(-18%)
+  transform: translateX(45%) translateY(-8%)
 }
 </style>
