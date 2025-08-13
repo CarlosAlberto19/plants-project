@@ -64,6 +64,7 @@ function handleBuy(plant) {
 
        <img class="bg-blob" src="@/assets/Rectangle2.svg" alt="background">
        <img class="curl" src="@/assets/Vector186.png" alt="curl" />
+        <img class="curl-right" src="@/assets/Vector187.png" alt="curl-right" />
        <img class="hero-img" src="@/assets/relleno.svg" alt="plant hero" />
     </div>
   </section>
@@ -81,12 +82,16 @@ function handleBuy(plant) {
   padding: 2rem;
   background-color: #C1DCDC;
   height: 28rem;
+  width: 1248px;
+
+  gap:2rem;
 
 }
 
 .hero-left {
-  margin-bottom: 6rem;
-  max-width: 60%;
+  flex: 0 0 58%;
+  margin-bottom: 0;
+  max-width: 58%;
 
   h1 {
     font-size: 2.5rem;
@@ -130,17 +135,14 @@ function handleBuy(plant) {
   max-width: 560px;
 }
 
-.hero-left { flex: 0 0 60%;
-height: auto;
 
-}
 
 .hero-right {
-flex: 1 1 40%;
+flex: 1 1 42%;
 position: relative;
-overflow: hidden;
-
-min-height: 520px;
+overflow: visible; //no se recorta. no hidden
+height: 518.15px;
+width: 400.54px;
 display:grid;
 place-items: center;
 
@@ -148,9 +150,11 @@ background-image: url ('@/assets/Rectangle2.svg');
 
 }
  .hero-img {
-    width: 80%;
+    position: relative;
+    z-index: 1;
+    width: 78%;
     height: auto;
-    transform: translateX(8%);
+    transform: translateX(5%) translateY(-39%)
 
   }
 
@@ -159,11 +163,11 @@ background-image: url ('@/assets/Rectangle2.svg');
     position: absolute;
     z-index: 0;
     width: 444.02px;
-    height: 394.69px;
-
-    top: 17%;
-    left: -10%;
-    transform: translate(10%, 0%)
+    height: 358px;
+    top: 24%;
+    left: -7%;
+    transform: none;
+    align-items: center;
 
   }
 
@@ -176,10 +180,19 @@ background-image: url ('@/assets/Rectangle2.svg');
 }
 
 .curl{
-  height: 60px;
-  position:relative;
+  height: auto;
+  position:sticky;
+  width:150px;
+  top:18%;
   align-items: flex-start;
-  transform: translate(-150%, 480%)
+  transform: translate(-250%, 340%);
 
+}
+
+.curl-right{
+  top:20%;
+  right: 10%;
+  width:75px;
+  transform: translateX(235%) translateY(-18%)
 }
 </style>
