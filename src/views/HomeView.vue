@@ -76,6 +76,10 @@ function handleBuy(plant) {
 </template>
 
 <style lang="scss" scoped>
+.home-view {
+  height: 100vh;
+  overflow-y: scroll;
+}
 .hero-header {
   display: flex;
   justify-content: space-between;
@@ -180,21 +184,22 @@ background-image: url ('@/assets/Rectangle2.svg');
   box-sizing: border-box;
 }
 
-.curl{
-  height: auto;
-  position:fixed;
-  width:150px;
-  top:18%;
-  align-items: flex-start;
-  transform: translate(-250%, 340%);
-
+.curl {
+  position: absolute; // Cambiado de fixed a absolute
+  z-index: 9999;
+  pointer-events: none;
+  width: 150px;
+  top: 58%;
+  left: -130px; // Ajusta según sea necesario
+  transform: translate(-50%, 52%); // Ajusta según sea necesario
 }
 
-.curl-right{
-  position:fixed;
-  top:20%;
-  right: 10%;
-  width:75px;
-  transform: translateX(45%) translateY(-8%)
+.curl-right {
+  position: absolute; // Cambiado de fixed a absolute
+  top: 10%;
+  right: 48px; // Ajusta según sea necesario
+  width: 85px;
+  transform: translate(50%, 0); // Ajusta según sea necesario
 }
+
 </style>
