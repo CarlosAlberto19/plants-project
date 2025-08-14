@@ -40,7 +40,7 @@ function handleUpdateCard(plant,action) {
 
 <style lang="scss" scoped>
 
-:global(#app) {
+#app > header { //esto cubre todos los fondos de la aplicación siempre y cuando no especifiques
   background: rgb(242, 243, 242);
 
 }
@@ -51,6 +51,8 @@ header {
   justify-content: end;
   align-items: center;
   padding: 1rem;
+
+
 
 }
 
