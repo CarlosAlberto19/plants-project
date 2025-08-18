@@ -165,15 +165,16 @@ const grandTotalLabel = computed(() =>
    ========================= */
 .cartSummary {
   background: #f4f7f6;
-  padding: 1.5rem;
+  padding: 0.5rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.5rem;
+  width: 80%;
 
   .cartSummaryHeader {
-    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -187,7 +188,7 @@ const grandTotalLabel = computed(() =>
   .cartSummaryImage { width: 60px; height: auto; }
 
   .cartSummaryTotal {
-    display: flex;
+    display: grid;
     justify-content: space-between;
     width: 100%;
     font-size: 1.1rem;
@@ -198,14 +199,16 @@ const grandTotalLabel = computed(() =>
   }
 
   .cartSummaryBuyBtn {
-    align-self: center;
+
+    align-self: flex-start;
     background-color: #c0d6d1;
     padding: 0.5rem 1rem;
-    font-weight: bold;
+    font-weight: bold !important;
     border: none;
     border-radius: 0.4rem;
     cursor: pointer;
     transition: background-color 0.2s;
+
 
     &:disabled {
       background-color: #ccc;
