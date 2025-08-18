@@ -26,8 +26,8 @@ function handleUpdateCard(plant, action) {
 
 <style lang="scss">
 .plant-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
   gap: 2rem;
 }
 </style>

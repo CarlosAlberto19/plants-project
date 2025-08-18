@@ -43,8 +43,8 @@ const grandTotalLabel = computed(() =>
     <img class="cartHeroBlob" src="@/assets/Rectangle2.svg" alt="fondo semicircular" />
 
     <div class="cartHeroLeft">
-      <h1>Cesta de la compra</h1>
-      <p>Revisa tus plantas antes de finalizar</p>
+      <h1>Cesta de la <br/> compra</h1>
+
     </div>
 
     <div class="cartHeroRight">
@@ -69,13 +69,13 @@ const grandTotalLabel = computed(() =>
     <!-- Columna derecha: resumen -->
     <aside class="cartSummary">
       <div class="cartSummaryHeader">
-        <h2>Cesta de la compra</h2>
-        <img src="@/assets/big-plant.png" alt="Decoración" class="cartSummaryImage" />
+
+
       </div>
 
       <div class="cartSummaryTotal">
-        <span>Precio final:</span>
-        <strong>{{ grandTotalLabel }}</strong>
+        <h2>Precio final:</h2>
+        <strong> <br/>{{ grandTotalLabel }}</strong>
       </div>
 
       <button
@@ -95,7 +95,7 @@ const grandTotalLabel = computed(() =>
    ========================= */
 .cartHero {
   width: 1248px;
-  height: 242px;
+  height: 222px;
   position: relative;
   display: grid;
   grid-template-columns: 1fr 250px; /* texto | zona visual */
@@ -103,14 +103,16 @@ const grandTotalLabel = computed(() =>
   gap: 2rem;
   background: #c1dcdc;
   padding: 1.25rem 1.75rem;
-  min-height: 282px;
+
   overflow: hidden;
+  font-size: 40px !important;
+
 
   .cartHeroBlob {
     position: absolute;
     z-index: 0;
-    width: 500px;
-    height: 800px;
+    width: 490px;
+    height: 900px;
     left: 38%;
     top: 62%;
     transform: translate(45%, -40%);
@@ -125,17 +127,17 @@ const grandTotalLabel = computed(() =>
     height: 100px;
     display: grid;
     place-items: end center;
-    overflow: visible;
-    transform: translateX(-50%) translateY(-18%)
+    overflow: visible ;
+    transform: translateX(-40%) translateY(-18%)
   }
 
   .cartHeroImage {
     position: relative;
     z-index: 18;
-    width: 350px;
+    width: 450px;
     height: 270px;
     pointer-events: none;
-    transform: scaleX(-1.70) translate(15%) ;
+    transform: scaleX(-1.40) translate(15%) ;
   }
 }
 
@@ -153,6 +155,8 @@ const grandTotalLabel = computed(() =>
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+
   }
 }
 
@@ -174,7 +178,10 @@ const grandTotalLabel = computed(() =>
     align-items: center;
     justify-content: space-between;
 
-    h2 { font-size: 1.2rem; margin: 0; }
+    h2 {
+      font-size: 3.2rem;
+      margin: 0; }
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
   .cartSummaryImage { width: 60px; height: auto; }

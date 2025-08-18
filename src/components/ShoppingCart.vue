@@ -62,8 +62,8 @@ function goToCart() {
   transform: translate(var(--tx, 35%), var(--ty, 35%));
 
   /* Estilos visuales */
-  min-width: 1.1rem;
-  height: 1.1rem;
+  min-width: 1.5rem;
+  height: 1.5rem;
   padding: 0 0.35rem;
   border-radius: 999px;
   display: grid;

@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, defineEmits, computed } from 'vue'
+import { formatCents } from '@/utils/money'
 
 const props = defineProps({
   plant:  { type: Object, required: true },
@@ -26,7 +27,7 @@ function handleRemove() {
     <!-- 2. Contenedor de detalles a la derecha -->
     <div class="plant-details">
       <h3 class="plant-name">{{ plant.name }}</h3>
-      <p class="plant-price">{{ totalPrice }} €</p>
+      <p class="plant-price">₱ {{ formatCents (totalPrice) }} </p>
       <div class="cart-controls">
         <button @click="handleRemove">−</button>
         <span class="cart-amount">{{ amount }}</span>
@@ -40,22 +41,29 @@ function handleRemove() {
 .plant-card-cart {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 12px;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
+  height: 209px;
+  width: 484px;
 }
 
 .plant-image {
   width: 120px;
+  height: 90px;
   height: auto;
   border-radius: 0.25rem;
-  flex-shrink: 0;
+  flex: 0 0 120px;
+  object-fit: cover;
+  object-position: center;
+
 }
 
 .plant-details {
-  flex: 1;
+  flex: 1 1 auto;
   display: flex;
+  min-width: 0;
   flex-direction: column;
   gap: 0.25rem;
 }
@@ -68,6 +76,7 @@ function handleRemove() {
 .plant-price {
   margin: 0;
   font-weight: bold;
+  font-size: medium;
 }
 
 .cart-controls {
@@ -92,7 +101,7 @@ function handleRemove() {
   min-width: 2rem;
   text-align: center;
   font-weight: bold;
-  background: #eee;
+  background: #d9d9d9;
   border-radius: 50%;
   line-height: 2rem;
 }

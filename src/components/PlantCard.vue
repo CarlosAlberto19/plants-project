@@ -1,5 +1,6 @@
 <script setup>
 import BuyButton from './BuyButton.vue'
+import { formatCents } from '@/utils/money'
 
 
 const props = defineProps({ plant: Object })
@@ -20,7 +21,7 @@ function handleBuy(plant, action) {
     <div class = "card-header">
     <h4>{{ props.plant.name }}</h4>
 
-    <p class="plant-price">₱ {{ props.plant.price }}</p>
+    <p class="plant-price">₱ {{ formatCents(props.plant.price) }}</p>
       </div>
     <!-- Escucha el evento 'buy' del botón y llama a handleBuy -->
     <BuyButton
@@ -41,9 +42,10 @@ function handleBuy(plant, action) {
   box-shadow: 0 2px 8px #0002;
   padding: 1.2rem;
   height: 493.45px;
-  width: 295.36px;
+  width: 240.36px;
   align-self: auto;
   transition: box-shadow 0.2s;
+  align-items: baseline;
 
 }
 
@@ -53,10 +55,12 @@ function handleBuy(plant, action) {
 
 .plant-image {
   width: 100%;
-  height: 140px;
-  object-fit: cover;
+  height: 120px;
   border-radius: 8px;
   height: 350px;
+  object-fit: cover;
+  object-position: center;
+
 }
 
 .plant-type {

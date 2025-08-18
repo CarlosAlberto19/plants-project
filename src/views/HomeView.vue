@@ -78,7 +78,7 @@ function handleBuy(plant) {
 <style lang="scss" scoped>
 .home-view {
   height: 100vh;
-  overflow-y: scroll;
+  overflow:visible;
 }
 .hero-header {
   display: flex;
