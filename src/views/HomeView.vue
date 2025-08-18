@@ -159,7 +159,7 @@ background-image: url ('@/assets/Rectangle2.svg');
     z-index: 1;
     width: 78%;
     height: auto;
-    transform: translateX(-7%) translateY(-7.5%)
+    transform: translateX(-3%) translateY(1%)
 
   }
 

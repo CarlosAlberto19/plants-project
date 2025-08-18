@@ -111,7 +111,7 @@ const grandTotalLabel = computed(() =>
   .cartHeroBlob {
     position: absolute;
     z-index: 0;
-    width: 490px;
+    width: 480px;
     height: 900px;
     left: 38%;
     top: 62%;
@@ -124,11 +124,11 @@ const grandTotalLabel = computed(() =>
   .cartHeroRight {
     position: relative;
     z-index: 1;
-    height: 100px;
+    height: 140px;
     display: grid;
     place-items: end center;
     overflow: visible ;
-    transform: translateX(-40%) translateY(-18%)
+    transform: translateX(-65%) translateY(0%)
   }
 
   .cartHeroImage {
@@ -138,6 +138,7 @@ const grandTotalLabel = computed(() =>
     height: 270px;
     pointer-events: none;
     transform: scaleX(-1.40) translate(15%) ;
+    overflow: hidden;
   }
 }
 
