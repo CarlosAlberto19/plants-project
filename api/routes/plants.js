@@ -2,14 +2,17 @@
 const express = require('express');
 const router = express.Router();
 
-// Importa el JSON con tus plantas (ruta relativa a ESTE archivo)
+// Importa el JSON con tus plantas (carga el mock desde ruta)
 const plants = require('../data/plants.json');
 
 // GET /plants → lista completa
-router.get('/', (_req, res) => {
-res.json(plants);
+router.get('/', (req, res) => {
+const q = (req.query.q || '').toLowerCase();
+const result = q
+? plants.filter(p => p.name.toLowerCase().includes(q))
+: plants;
+res.json(result);
 });
-
 // GET /plants/:id → detalle por id
 router.get('/:id', (req, res) => {
 const id = Number(req.params.id);
