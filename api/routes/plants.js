@@ -7,11 +7,11 @@ const plants = require('../data/plants.json');
 
 // GET /plants → lista completa
 router.get('/', (req, res) => {
-const q = (req.query.q || '').toLowerCase();
-const result = q
+const q = (req.query.q || '').toLowerCase().trim();
+const results = q
 ? plants.filter(p => p.name.toLowerCase().includes(q))
 : plants;
-res.json(result);
+res.json(results);
 });
 // GET /plants/:id → detalle por id
 router.get('/:id', (req, res) => {

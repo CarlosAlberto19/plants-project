@@ -11,10 +11,10 @@ const plantList = ref([])
 const loading = ref(false)
 const error = ref(null)
 
-const API_BASE = import.meta.env.VITE_API_URL || '[http://localhost:3000](http://localhost:3000/)'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 const filteredPlantList = computed(() => {
-  const q =searchTerm.value.trim().toLocaleLowerCase()
+  const q = searchTerm.value.trim().toLocaleLowerCase()
   if (!q) return plantList.value
   return plantList.value.filter(p => p.name?.toLocaleLowerCase().includes(q))
 })
@@ -144,6 +144,7 @@ function filterPlants(term) {
   clearTimeout(debounceId)
   debounceId = setTimeout(() => {
     searchTerm.value = term
+    fetchPlants(term)
   }, 300)
 }
 
@@ -176,7 +177,7 @@ function handleBuy(plant) {
       </div>
 
       <SearchBar class="searchbar-left" @search="filterPlants" />
-    
+
     </div>
 
     <div class="hero-right">
@@ -198,6 +199,7 @@ function handleBuy(plant) {
   height: 100vh;
   overflow: visible;
 }
+
 .hero-header {
   display: flex;
   justify-content: space-between;
@@ -237,6 +239,7 @@ function handleBuy(plant) {
         font-size: 2rem;
         margin: 0;
       }
+
       p {
         margin: 0;
         font-size: 1rem;
@@ -268,6 +271,7 @@ function handleBuy(plant) {
 
   background-image: url ('@/assets/Rectangle2.svg');
 }
+
 .hero-img {
   position: relative;
   z-index: 1;
