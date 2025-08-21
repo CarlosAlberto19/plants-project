@@ -16,6 +16,7 @@ res.json(results);
 // GET /plants/:id → detalle por id
 router.get('/:id', (req, res) => {
 const id = Number(req.params.id);
+if (Number.isNan(id)) return res.status(400).json ({error: 'Bad id'});
 const plant = plants.find (p => (p.id === id));
 if (!plant) return res.status(404).json({ error: 'Plant not found' });
 res.json(plant);

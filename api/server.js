@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const eventsRouter = require('./routes/events')
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.get('/health', (_req, res) => res.json({ ok: true }));
 // ==== Rutas ====
 const plantsRouter = require('./routes/plants');       // api/routes/plants.js
 app.use('/plants', plantsRouter);
+app.use('/events', eventsRouter);
+
 
 // Raíz informativa (opcional)
 app.get('/', (_req, res) =>

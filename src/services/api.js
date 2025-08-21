@@ -1,9 +1,25 @@
-export async function fetchPlants({ q = '' } = {}) {
-const base = import.meta.env.VITE_API_URL;  // ← lee VITE_API_URL
-const url = new URL('/plants', base);       // http://localhost:3000/plants
-if (q) url.searchParams.set('q', q);        // añade ?q=term si hace falta
+// src/services/api.js
+const BASE = import.meta.env.VITE_API_URL || '[http://localhost:3000](http://localhost:3000/)';
 
+// === 1) SIGUE IGUAL: buscar plantas (con ?q=...) ===
+export async function fetchPlants(term = '') {
+const url = new URL('/plants', BASE);
+if (term && term.trim()) url.searchParams.set('q', term.trim());
 const res = await fetch(url.toString());
-if (!res.ok) throw new Error('Error cargando plantas');
+if (!res.ok) throw new Error(`HTTP ${res.status}`);
 return await res.json();
+}
+
+// === 2) NUEVO: enviar eventos al backend ===
+export async function logEvent(payload) {
+try {
+await fetch(`${BASE}/events`, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(payload),
+});
+// no rompemos la UI si falla el log
+} catch (e) {
+console.warn('logEvent (ignorado):', e);
+}
 }

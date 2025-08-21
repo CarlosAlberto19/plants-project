@@ -3,6 +3,8 @@ import { ref, onMounted, computed } from 'vue'
 import PlantList from '@/components/PlantList.vue'
 import SearchBar from '@/components/SearchBar.vue'
 
+
+
 const emit = defineEmits(['update-card'])
 
 const searchTerm = ref('')
@@ -137,20 +139,59 @@ async function fetchPlants(term = '') {
 
 onMounted(() => {
   fetchPlants()
+
 })
 
 let debounceId
+
+async function logToserver(event) {
+  try {
+    await fetch('http://localhost:3000/events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'  },
+      body: JSON.stringify(event)
+
+    })
+
+  } catch (e) {
+  console.warn('Error al enviar log:', e)
+
+  }
+
+
+}
+
+
 function filterPlants(term) {
   clearTimeout(debounceId)
   debounceId = setTimeout(() => {
     searchTerm.value = term
     fetchPlants(term)
+// log de búsqueda tras el debounce
+    logToserver({
+      type: 'search',
+      query: term,
+      ts: Date.now()
+    })
+
   }, 300)
 }
 
 function handleBuy(plant) {
   emit('update-card', plant, 'add')
+  logToserver( {
+    type: 'buy',
+    id: plant.id,
+    name: plant.name,
+    price: plant.price,
+    action: "add",
+    time: new Date().toISOString()
+
+  })
+
 }
+
+
 
 
 </script>
