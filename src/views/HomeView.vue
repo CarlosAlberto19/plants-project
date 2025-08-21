@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from 'vue'
 import PlantList from '@/components/PlantList.vue'
 import SearchBar from '@/components/SearchBar.vue'
-
+import { fetchPlantsApi } from '@/services/api'
 
 
 const emit = defineEmits(['update-card'])
@@ -13,7 +13,7 @@ const plantList = ref([])
 const loading = ref(false)
 const error = ref(null)
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
 
 const filteredPlantList = computed(() => {
   const q = searchTerm.value.trim().toLocaleLowerCase()
@@ -24,14 +24,12 @@ const filteredPlantList = computed(() => {
 async function fetchPlants(term = '') {
   loading.value = true
   error.value = null
-  try {
-    const url = term ? `${API_BASE}/plants?q=${encodeURIComponent(term)}` : `${API_BASE}/plants`
-    const res = await fetch(url)
-    if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    const data = await res.json()
-    plantList.value = Array.isArray(data) ? data : []
-  } catch (e) {
-    error.value = e.message || 'Fetch error'
+ try {
+// Llamada al servicio (backend)
+const data = await fetchPlantsApi(term);
+plantList.value = data;
+} catch (e) {
+error.value = e.message || 'Fetch error';
     if (plantList.value.length === 0) {
       plantList.value = [
         {
